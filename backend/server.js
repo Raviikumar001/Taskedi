@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const connectDb = require("./db/connect");
 const authRoutes = require("./routes/auth-routes");
+const boardRoutes = require("./routes/board-routes");
 require("dotenv").config();
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/v1/auth", authRoutes);
+app.use("/v1/api", boardRoutes);
 
 app.use("/", () => {
   res.send("Welcome to Taskedi");
